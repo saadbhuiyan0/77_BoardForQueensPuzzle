@@ -1,1 +1,1 @@
-# 77_BoardForQueensPuzzle
+# represent a board for the queens puzzle
