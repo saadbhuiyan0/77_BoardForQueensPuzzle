@@ -21,7 +21,7 @@ public class BoardForQueensPuzzle {
       Construct an empty instance of the specified size
      */
     public BoardForQueensPuzzle( int ranks) {
-      filesWithQueens = new int[ranks];
+      filesWithQueens = new int[ ranks];
       lastRankFilled = -1;
     }
 
@@ -42,7 +42,17 @@ public class BoardForQueensPuzzle {
                      no queen attacked another.
      */
     public boolean lastIsNg() {
-        return true;
+      for ( int currentRank = 0; currentRank < lastRankFilled; currentRank++) {
+        if ( filesWithQueens[ currentRank] == filesWithQueens[ lastRankFilled]) {
+          return true; 
+        }
+        if ( Math.abs( currentRank - lastRankFilled) 
+              ==
+              Math.abs( filesWithQueens[ currentRank] - filesWithQueens[ lastRankFilled])) {
+          return true; 
+        }
+      }
+      return false;
     }
 
 
@@ -58,7 +68,9 @@ public class BoardForQueensPuzzle {
         This method checks the last-filled rank.
      */
     public boolean accept() {
-        return false;
+      return lastRankFilled == filesWithQueens.length - 1 
+              && 
+              !lastIsNg();
     }
 
 
@@ -66,6 +78,7 @@ public class BoardForQueensPuzzle {
       Populate the next rank with a queen in position @file
      */
     public void populate( int file) {
+      filesWithQueens[++lastRankFilled] = file; 
     }
 
 
@@ -75,6 +88,7 @@ public class BoardForQueensPuzzle {
       @precondition: Some rank(s) have been populated.
      */
     public void depopulate() {
+      lastRankFilled--;
     }
 
 
