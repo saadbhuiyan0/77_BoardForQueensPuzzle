@@ -21,6 +21,8 @@ public class BoardForQueensPuzzle {
       Construct an empty instance of the specified size
      */
     public BoardForQueensPuzzle( int ranks) {
+      filesWithQueens = new int[ranks];
+      lastRankFilled = -1;
     }
 
 
@@ -28,7 +30,7 @@ public class BoardForQueensPuzzle {
       @return the size of the board
      */
     public int ranks() {
-        return -16;   // invalid value
+      return filesWithQueens.length;
     }
 
 
